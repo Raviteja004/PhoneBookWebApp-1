@@ -18,8 +18,8 @@
 
 </head>
 <body>
-  <h1> under constructor</h1>
-  <a href="contact">+ add new contact</a>
+  <h1> Contact Information </h1>
+  <a href="load-form">+ add new contact</a>
   <table border=1>
      <thead>
             <tr>
@@ -37,7 +37,7 @@
                     <td>${contact.contactName}</td>
                     <td>${contact.contactEmail}</td>
                     <td>${contact.contactNumber}</td>
-                    <td><a href ="edit?cid=${contact.contactId}">Edit</a>  
+                    <td><a href="edit?cid=${contact.contactId}">Edit</a>  
                         <a href="delete?cid=${contact.contactId}"  onclick=confirmDelete()>Delete</a> </td>
                     
                  </tr>

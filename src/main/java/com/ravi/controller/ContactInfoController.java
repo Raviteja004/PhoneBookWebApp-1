@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -32,13 +33,11 @@ public class ContactInfoController {
 	}
 
 	@PostMapping("/saveContact")
-	public String handleSubmitBtn( ContactDetails contact, Model model) {
+	public String handleSubmitBtn(@ModelAttribute("contact") ContactDetails contact, Model model) {
 		boolean isSaved = service.saveOrUpdateContacts(contact);
-        System.out.println("hello handle submit::"+isSaved);
+		System.out.println("hello handle submit::" + isSaved);
 		if (isSaved) {
-			System.out.println("inside success message");
 			model.addAttribute("succMsg", "Contact Saved");
-			System.out.println("after success message");
 		} else {
 			model.addAttribute("failMsg", "Failed to save contact");
 		}
@@ -46,12 +45,11 @@ public class ContactInfoController {
 		return "contact";
 	}
 
-	
-    @GetMapping("/view-contacts")
+	@GetMapping("/view-contacts")
 	public String handleViewContactHyperlink(Model model) {
-    	List<ContactDetails> allcontactsObj = service.DisplayContactsInfo();
-    	System.out.println("allcontactsObj==>"+allcontactsObj);
-    	model.addAttribute("contacts",allcontactsObj);
+		List<ContactDetails> allcontactsObj = service.DisplayContactsInfo();
+		System.out.println("allcontactsObj==>" + allcontactsObj);
+		model.addAttribute("contacts", allcontactsObj);
 		return "allcontacts-display";
 	}
 }

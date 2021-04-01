@@ -12,7 +12,7 @@
 </head>
 <body>
 	<h3>Contact Info</h3>
-	<form:form action="saveContact?contactId=${conact.contactId}" method="POST" modelAttribute="contact" >
+	<form:form action="saveContact?contactId=${contact.contactId}" method="POST" modelAttribute="contact" >
 
 		${succMsg}
 

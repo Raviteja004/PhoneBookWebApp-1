@@ -3,6 +3,7 @@ package com.ravi.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ravi.persistencyLayer.ContactDetails;
@@ -17,7 +18,7 @@ public class ContactOperationsController {
 	}
 	
 	@GetMapping("/edit")
-	public String editContact(@RequestParam("cid") Integer contactId, Model model)
+	public String editContact( @RequestParam("cid") Integer contactId, Model model)
 	{
 		ContactDetails contactByIdobj = service.getContactById(contactId);
 		 model.addAttribute("contact", contactByIdobj);
